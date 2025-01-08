@@ -68,6 +68,12 @@
 		378DB4F42D2ED0330039DAB7 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378DB4E92D2ED0330039DAB7 /* Roboto-Thin.ttf */; };
 		378DB4F52D2ED0330039DAB7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378DB4E12D2ED0330039DAB7 /* Roboto-Bold.ttf */; };
 		378DB4F62D2ED0330039DAB7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378DB4E82D2ED0330039DAB7 /* Roboto-Regular.ttf */; };
+		378DB4F92D2EF13F0039DAB7 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB4F82D2EF13F0039DAB7 /* Config.swift */; };
+		378DB4FB2D2EF1550039DAB7 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB4FA2D2EF1550039DAB7 /* HTTPMethod.swift */; };
+		378DB4FD2D2EF1600039DAB7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB4FC2D2EF1600039DAB7 /* NetworkService.swift */; };
+		378DB4FF2D2EF17B0039DAB7 /* EndpointRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB4FE2D2EF17B0039DAB7 /* EndpointRouter.swift */; };
+		378DB5022D2EF1B20039DAB7 /* MainNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5012D2EF1B20039DAB7 /* MainNetworkService.swift */; };
+		378DB5072D2EF24A0039DAB7 /* TMDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5062D2EF24A0039DAB7 /* TMDBError.swift */; };
 		B3A12409F260D7C2F9731E64 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +142,12 @@
 		378DB4E62D2ED0330039DAB7 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		378DB4E82D2ED0330039DAB7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		378DB4E92D2ED0330039DAB7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		378DB4F82D2EF13F0039DAB7 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		378DB4FA2D2EF1550039DAB7 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		378DB4FC2D2EF1600039DAB7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		378DB4FE2D2EF17B0039DAB7 /* EndpointRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointRouter.swift; sourceTree = "<group>"; };
+		378DB5012D2EF1B20039DAB7 /* MainNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNetworkService.swift; sourceTree = "<group>"; };
+		378DB5062D2EF24A0039DAB7 /* TMDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBError.swift; sourceTree = "<group>"; };
 		674C08976EDB7377636E4FE6 /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -196,6 +208,7 @@
 		3753901F2D2DB66F0067B0BB /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				378DB5042D2EF2230039DAB7 /* Entities */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -220,6 +233,9 @@
 		375390222D2DB6990067B0BB /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				378DB4F72D2EF1270039DAB7 /* Models */,
+				378DB5002D2EF19A0039DAB7 /* Protocols */,
+				378DB5032D2EF1C70039DAB7 /* Implementation */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -495,6 +511,48 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		378DB4F72D2EF1270039DAB7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				378DB4FA2D2EF1550039DAB7 /* HTTPMethod.swift */,
+				378DB4F82D2EF13F0039DAB7 /* Config.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		378DB5002D2EF19A0039DAB7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				378DB4FE2D2EF17B0039DAB7 /* EndpointRouter.swift */,
+				378DB4FC2D2EF1600039DAB7 /* NetworkService.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		378DB5032D2EF1C70039DAB7 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				378DB5012D2EF1B20039DAB7 /* MainNetworkService.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		378DB5042D2EF2230039DAB7 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				378DB5052D2EF22F0039DAB7 /* Others */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		378DB5052D2EF22F0039DAB7 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				378DB5062D2EF24A0039DAB7 /* TMDBError.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 		AA5C5E495F8542372B33D139 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +694,7 @@
 				3753907A2D2DCDB60067B0BB /* CollectionViewDataSourceConfigurator.swift in Sources */,
 				3753903F2D2DC6620067B0BB /* LaunchCoordinatorFactory.swift in Sources */,
 				3753908D2D2DCEB90067B0BB /* NiblessNavigationController.swift in Sources */,
+				378DB4FB2D2EF1550039DAB7 /* HTTPMethod.swift in Sources */,
 				375390942D2DCF1C0067B0BB /* UIView+Layout.swift in Sources */,
 				375390602D2DCC660067B0BB /* HomeViewModel.swift in Sources */,
 				3753909B2D2DCFD70067B0BB /* UIColor+Hex.swift in Sources */,
@@ -652,19 +711,24 @@
 				3753908B2D2DCEA20067B0BB /* NiblessViewController.swift in Sources */,
 				375390342D2DC56C0067B0BB /* Coordinator.swift in Sources */,
 				375390442D2DC6F50067B0BB /* HomeCoordinatorNavigationDelegate.swift in Sources */,
+				378DB4FF2D2EF17B0039DAB7 /* EndpointRouter.swift in Sources */,
+				378DB5022D2EF1B20039DAB7 /* MainNetworkService.swift in Sources */,
 				375390422D2DC69D0067B0BB /* HomeCoordinator.swift in Sources */,
 				3753908F2D2DCEE50067B0BB /* NiblessView.swift in Sources */,
 				375390852D2DCE3D0067B0BB /* NiblessCollectionReusableView.swift in Sources */,
 				3753902C2D2DB81E0067B0BB /* RootViewController.swift in Sources */,
+				378DB5072D2EF24A0039DAB7 /* TMDBError.swift in Sources */,
 				375390962D2DCF6F0067B0BB /* UIViewController+Containment.swift in Sources */,
 				378DB4CD2D2ECAD30039DAB7 /* UIView+Styling.swift in Sources */,
 				375390802D2DCDFC0067B0BB /* ConfigurableCell.swift in Sources */,
 				375390872D2DCE690067B0BB /* NiblessTableViewHeaderFooterView.swift in Sources */,
 				375390592D2DCB5E0067B0BB /* LaunchViewModel.swift in Sources */,
 				378DB4C92D2ECA940039DAB7 /* UIButton+Styling.swift in Sources */,
+				378DB4F92D2EF13F0039DAB7 /* Config.swift in Sources */,
 				375390552D2DC9B60067B0BB /* LaunchViewControllerFactory.swift in Sources */,
 				3753903D2D2DC63E0067B0BB /* LaunchCoordinatorNavigationDelegate.swift in Sources */,
 				375390372D2DC5B70067B0BB /* AppCoordinator.swift in Sources */,
+				378DB4FD2D2EF1600039DAB7 /* NetworkService.swift in Sources */,
 				378DB4CB2D2ECABE0039DAB7 /* UIImageView+Styling.swift in Sources */,
 				375390462D2DC70A0067B0BB /* HomeCoordinatorFactory.swift in Sources */,
 				375390622D2DCCB30067B0BB /* HomeViewControllerNavigationDelegate.swift in Sources */,
