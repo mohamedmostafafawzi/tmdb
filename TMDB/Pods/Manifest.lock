@@ -1,0 +1,44 @@
+PODS:
+  - PromiseKit (8.1.2):
+    - PromiseKit/CorePromise (= 8.1.2)
+    - PromiseKit/Foundation (= 8.1.2)
+    - PromiseKit/UIKit (= 8.1.2)
+  - PromiseKit/CorePromise (8.1.2)
+  - PromiseKit/Foundation (8.1.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (8.1.2):
+    - PromiseKit/CorePromise
+  - RxCocoa (6.6.0):
+    - RxRelay (= 6.6.0)
+    - RxSwift (= 6.6.0)
+  - RxRelay (6.6.0):
+    - RxSwift (= 6.6.0)
+  - RxSwift (6.6.0)
+  - SDWebImage (5.19.7):
+    - SDWebImage/Core (= 5.19.7)
+  - SDWebImage/Core (5.19.7)
+
+DEPENDENCIES:
+  - PromiseKit (~> 8)
+  - RxCocoa (= 6.6.0)
+  - RxSwift (= 6.6.0)
+  - SDWebImage (~> 5.0)
+
+SPEC REPOS:
+  trunk:
+    - PromiseKit
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  PromiseKit: e057b5b3c0ce9a0145674d633930924234104ee3
+  RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
+  RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
+  RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
+  SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
+
+PODFILE CHECKSUM: d1d186491ab55616dc9dd93099de451839899c46
+
+COCOAPODS: 1.16.2
