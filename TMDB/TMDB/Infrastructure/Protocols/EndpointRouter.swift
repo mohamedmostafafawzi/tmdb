@@ -32,12 +32,17 @@ extension EndpointRouter {
             components?.queryItems = parameters.map { key, value in URLQueryItem(name: key, value: "\(value)") }
         }
         
+        let apiKeyQueryItem = URLQueryItem(name: "api_key", value: Config.apiKey)
+        components?.queryItems?.append(apiKeyQueryItem)
+        
         // Configure URL request
         guard let url = components?.url else { throw TMDBError.invalidEndPoint }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
         urlRequest.setValue(Config.HTTPHeaderFieldValue.json.rawValue,
                             forHTTPHeaderField: Config.HTTPHeaderFieldKey.contentType.rawValue)
+        urlRequest.setValue("Bearer \(Config.accessToken)",
+                            forHTTPHeaderField: Config.HTTPHeaderFieldKey.authorization.rawValue)
         
         // Construct HTTP body (If possible)
         if let body = body {
