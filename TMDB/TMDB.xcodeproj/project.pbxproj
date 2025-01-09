@@ -92,6 +92,7 @@
 		378DB5362D2F81350039DAB7 /* CrewMemberDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5352D2F81350039DAB7 /* CrewMemberDTO+Mapping.swift */; };
 		378DB5382D2F81660039DAB7 /* DepartmentDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5372D2F81660039DAB7 /* DepartmentDTO+Mapping.swift */; };
 		378DB53A2D2F87C60039DAB7 /* ResultContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5392D2F87C60039DAB7 /* ResultContainer.swift */; };
+		378DB53F2D2F8D730039DAB7 /* ContentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB53E2D2F8D730039DAB7 /* ContentUseCase.swift */; };
 		B3A12409F260D7C2F9731E64 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +185,7 @@
 		378DB5352D2F81350039DAB7 /* CrewMemberDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrewMemberDTO+Mapping.swift"; sourceTree = "<group>"; };
 		378DB5372D2F81660039DAB7 /* DepartmentDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DepartmentDTO+Mapping.swift"; sourceTree = "<group>"; };
 		378DB5392D2F87C60039DAB7 /* ResultContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultContainer.swift; sourceTree = "<group>"; };
+		378DB53E2D2F8D730039DAB7 /* ContentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentUseCase.swift; sourceTree = "<group>"; };
 		674C08976EDB7377636E4FE6 /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -244,6 +246,7 @@
 		3753901F2D2DB66F0067B0BB /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				378DB53C2D2F8D620039DAB7 /* UseCase */,
 				378DB5042D2EF2230039DAB7 /* Entities */,
 				378DB51A2D2F6C450039DAB7 /* Interfaces */,
 			);
@@ -663,6 +666,14 @@
 			path = APIContainers;
 			sourceTree = "<group>";
 		};
+		378DB53C2D2F8D620039DAB7 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				378DB53E2D2F8D730039DAB7 /* ContentUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		AA5C5E495F8542372B33D139 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -820,6 +831,7 @@
 				378DB4C72D2ECA710039DAB7 /* UILabel+Styling.swift in Sources */,
 				378DB4D62D2ECCB90039DAB7 /* FontManager.swift in Sources */,
 				375390832D2DCE200067B0BB /* NiblessCollectionViewCell.swift in Sources */,
+				378DB53F2D2F8D730039DAB7 /* ContentUseCase.swift in Sources */,
 				378DB5282D2F80380039DAB7 /* CrewMember.swift in Sources */,
 				378DB5092D2F60B80039DAB7 /* Movie.swift in Sources */,
 				3753905E2D2DCC0A0067B0BB /* HomeRootView.swift in Sources */,
