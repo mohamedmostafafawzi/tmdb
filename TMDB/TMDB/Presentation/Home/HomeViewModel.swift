@@ -17,13 +17,16 @@ public class HomeViewModel: ViewModelType {
     
     public struct Input {
         let getPopularMovies = PublishSubject<()>()
+        let homeItemSelected = PublishSubject<HomeCellViewModel>()
     }
     
     public struct Output {
+        let homeSections: BehaviorRelay<[HomeSectionViewModel]>
         let isLoading: Driver<Bool>
     }
         
     // MARK: - Subjects
+    private let homeSectionsSubject = BehaviorRelay<[HomeSectionViewModel]>(value: [])
     private let isLoadingSubject = BehaviorSubject<Bool>(value: false)
 
     // MARK: - Properties
@@ -40,24 +43,43 @@ public class HomeViewModel: ViewModelType {
         
         // Configure input & output
         input = Input()
-        output = Output(isLoading: isLoadingSubject.asDriver(onErrorJustReturn: false))
+        output = Output(homeSections: homeSectionsSubject,
+                        isLoading: isLoadingSubject.asDriver(onErrorJustReturn: false))
         
         // Subscribe for input events
         subscribeToGetPopularMovies()
+        subscribeToHomeItemSelected()
 
     }
     
     // MARK: - Internal logic
     private func getPopularMovies() {
         isLoadingSubject.onNext(true)
+        // TODO: - Pagination
         contentUseCase.getPopularMovies(page: 1)
-            .done { [weak self] in
-                print("\($0.results.count) of \($0.totalPages)")
+            .done { [weak self] results in
+                guard let self else { return }
+                configureSections(with: results.results)
             }
             .catch(handleError)
             .finally { [weak self] in
                 self?.isLoadingSubject.onNext(false)
             }
+    }
+    
+    private func configureSections(with movies: [Movie]) {
+        // Group movies by their release year
+        let groupedMovies = Dictionary(grouping: movies, by: { $0.releaseYear })
+        
+        // Transform groups into sections
+        let sections = groupedMovies.map { year, movies in
+            HomeSectionViewModel(
+                title: year,
+                items: movies.map { HomeCellViewModel(fromDomain: $0) }
+            )
+        }.sorted { $0.title < $1.title }
+        // TODO: - Append to it after implementing pagination
+        self.homeSectionsSubject.accept(sections)
     }
     
     // MARK: - Input events subscription
@@ -66,11 +88,19 @@ public class HomeViewModel: ViewModelType {
             self?.getPopularMovies()
         }).disposed(by: disposeBag)
     }
+    
+    private func subscribeToHomeItemSelected() {
+        input.homeItemSelected
+            .subscribe(onNext: { [weak self] item in
+                // TODO: Navigate to movie details
+                print("Title: \(item.title) with id: \(item.id) Selected")
+            }).disposed(by: disposeBag)
+    }
 }
 
 // MARK: - Error handling
 extension HomeViewModel {
     private func handleError(_ error: Error) {
-        
+        // TODO: Error handling
     }
 }

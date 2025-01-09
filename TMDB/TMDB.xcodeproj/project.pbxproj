@@ -98,6 +98,7 @@
 		378DB5482D3046900039DAB7 /* HomeSectionTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5472D3046900039DAB7 /* HomeSectionTableViewHeader.swift */; };
 		378DB54A2D30471D0039DAB7 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5492D30471D0039DAB7 /* HomeTableViewCell.swift */; };
 		378DB54C2D304A4A0039DAB7 /* UIImageView+SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB54B2D304A4A0039DAB7 /* UIImageView+SetImage.swift */; };
+		378DB5502D3054C40039DAB7 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB54F2D3054C40039DAB7 /* SearchTextField.swift */; };
 		B3A12409F260D7C2F9731E64 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +197,7 @@
 		378DB5472D3046900039DAB7 /* HomeSectionTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionTableViewHeader.swift; sourceTree = "<group>"; };
 		378DB5492D30471D0039DAB7 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		378DB54B2D304A4A0039DAB7 /* UIImageView+SetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+SetImage.swift"; sourceTree = "<group>"; };
+		378DB54F2D3054C40039DAB7 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		674C08976EDB7377636E4FE6 /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -468,6 +470,7 @@
 		375390752D2DCD710067B0BB /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				378DB54D2D3054AD0039DAB7 /* Views */,
 				375390762D2DCD900067B0BB /* Protocols */,
 				375390812D2DCE110067B0BB /* NiblessComponents */,
 				375390902D2DCEFD0067B0BB /* Layout */,
@@ -713,6 +716,22 @@
 			path = HomeTableViewCell;
 			sourceTree = "<group>";
 		};
+		378DB54D2D3054AD0039DAB7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				378DB54E2D3054B30039DAB7 /* TextFields */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		378DB54E2D3054B30039DAB7 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				378DB54F2D3054C40039DAB7 /* SearchTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
 		AA5C5E495F8542372B33D139 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -862,6 +881,7 @@
 				3753909B2D2DCFD70067B0BB /* UIColor+Hex.swift in Sources */,
 				378DB5362D2F81350039DAB7 /* CrewMemberDTO+Mapping.swift in Sources */,
 				375390922D2DCF0F0067B0BB /* AnchoredConstraints.swift in Sources */,
+				378DB5502D3054C40039DAB7 /* SearchTextField.swift in Sources */,
 				378DB5172D2F67510039DAB7 /* ContentRouter.swift in Sources */,
 				375390642D2DCCD10067B0BB /* HomeViewControllerFactory.swift in Sources */,
 				378DB4D82D2ECD180039DAB7 /* Dimensions.swift in Sources */,
