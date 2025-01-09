@@ -16,17 +16,17 @@ public class HomeTableViewCell: NiblessTableViewCell {
     private let cardView = UIView().style(backgroundColor: .cardViewBackground,
                                           cornerRadius: Dimensions.cornerRadius)
     let posterImageView = UIImageView().style(image: UIImage(named: "poster-placeholder"),
-                                             contentMode: .scaleAspectFill,
-                                             cornerRadius: Dimensions.cornerRadius)
+                                              contentMode: .scaleAspectFill,
+                                              cornerRadius: Dimensions.cornerRadius)
     let titleLabel = UILabel().style(font: .bold(size: .bodyM),
-                                textColor: .primaryText,
-                                numberOfLines: 1)
+                                     textColor: .primaryText,
+                                     numberOfLines: 1)
     let overviewLabel = UILabel().style(font: .regular(size: .bodyS),
-                                    textColor: .secondaryText)
-    // TODO: - Add watchlist state image
-    let isOnWatchlistImageView = UIImageView().style(image: UIImage(systemName: "star.fill"),
-                                             contentMode: .scaleAspectFill,
-                                             cornerRadius: Dimensions.cornerRadius)
+                                        textColor: .secondaryText)
+    let isOnWatchlistImageView = UIImageView().style(tintColor: .tertiary,
+                                                     image: UIImage(systemName: "bookmark.fill"),
+                                                     contentMode: .scaleAspectFill,
+                                                     cornerRadius: Dimensions.cornerRadius)
 
     
     // MARK: - Properties
@@ -62,12 +62,20 @@ extension HomeTableViewCell {
             $0.constrainWidth(80)
         })
         
+        // Configure watchlist status
+        cardView.add(isOnWatchlistImageView, then: {
+            $0.anchor(.top(cardView.topAnchor, constant: 8),
+                      .trailing(cardView.trailingAnchor, constant: 8))
+            $0.constrainHeight(20)
+            $0.constrainWidth(20)
+        })
+        
         // Configure info
         let infoStackView = configureInfoStackView()
         cardView.add(infoStackView, then: {
             $0.anchor(.leading(posterImageView.trailingAnchor, constant: 16),
                       .top(cardView.topAnchor, constant: 8),
-                      .trailing(cardView.trailingAnchor, constant: 16),
+                      .trailing(isOnWatchlistImageView.leadingAnchor, constant: 4),
                       .bottomGreaterThanOrEqualTo(cardView.bottomAnchor, constant: 8))
         })
         
@@ -81,13 +89,12 @@ extension HomeTableViewCell {
     }
     
     private func configureInfoStackView() -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, overviewLabel, isOnWatchlistImageView])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, overviewLabel])
         stackView.alignment = .top
         stackView.axis = .vertical
-        stackView.spacing = 2
+        stackView.spacing = 4
         stackView.add(titleLabel)
         stackView.add(overviewLabel)
-        stackView.add(isOnWatchlistImageView)
         
         return stackView
     }

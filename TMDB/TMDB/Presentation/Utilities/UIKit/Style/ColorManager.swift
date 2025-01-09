@@ -36,8 +36,8 @@ public extension UIColor {
                                           dark: ColorPalette.darkestGrey)
     static let secondaryBackground = evaluateColor(light: ColorPalette.lightestGrey,
                                                    dark: ColorPalette.black)
-    static let cardViewBackground = evaluateColor(light: ColorPalette.white,
-                                                  dark: ColorPalette.darkestGrey)
+    static let cardViewBackground = evaluateColor(light: ColorPalette.lightestGrey,
+                                                  dark: ColorPalette.darkGrey)
     static let primaryButtonBackground = evaluateColor(light: ColorPalette.red,
                                                        dark: ColorPalette.red)
     static let navigationBarBackground = evaluateColor(light: ColorPalette.white,

@@ -24,7 +24,7 @@ extension MovieDTO {
             overview: overview,
             releaseYear: releaseDate.toYear(),
             posterURL: Config.imageBaseURL + Config.ImageSize.Poster.original.rawValue + posterPath,
-            isOnWatchlist: false //TODO: - Check saved movieIDs
+            isOnWatchlist: true //TODO: - Check saved movieIDs
         )
     }
 }
