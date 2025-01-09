@@ -91,6 +91,7 @@
 		378DB5342D2F811D0039DAB7 /* CastMemberDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5332D2F811D0039DAB7 /* CastMemberDTO+Mapping.swift */; };
 		378DB5362D2F81350039DAB7 /* CrewMemberDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5352D2F81350039DAB7 /* CrewMemberDTO+Mapping.swift */; };
 		378DB5382D2F81660039DAB7 /* DepartmentDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5372D2F81660039DAB7 /* DepartmentDTO+Mapping.swift */; };
+		378DB53A2D2F87C60039DAB7 /* ResultContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5392D2F87C60039DAB7 /* ResultContainer.swift */; };
 		B3A12409F260D7C2F9731E64 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +183,7 @@
 		378DB5332D2F811D0039DAB7 /* CastMemberDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CastMemberDTO+Mapping.swift"; sourceTree = "<group>"; };
 		378DB5352D2F81350039DAB7 /* CrewMemberDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrewMemberDTO+Mapping.swift"; sourceTree = "<group>"; };
 		378DB5372D2F81660039DAB7 /* DepartmentDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DepartmentDTO+Mapping.swift"; sourceTree = "<group>"; };
+		378DB5392D2F87C60039DAB7 /* ResultContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultContainer.swift; sourceTree = "<group>"; };
 		674C08976EDB7377636E4FE6 /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -591,6 +593,7 @@
 		378DB5052D2EF22F0039DAB7 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				378DB5392D2F87C60039DAB7 /* ResultContainer.swift */,
 				378DB5062D2EF24A0039DAB7 /* TMDBError.swift */,
 			);
 			path = Others;
@@ -838,6 +841,7 @@
 				378DB5382D2F81660039DAB7 /* DepartmentDTO+Mapping.swift in Sources */,
 				375390962D2DCF6F0067B0BB /* UIViewController+Containment.swift in Sources */,
 				378DB4CD2D2ECAD30039DAB7 /* UIView+Styling.swift in Sources */,
+				378DB53A2D2F87C60039DAB7 /* ResultContainer.swift in Sources */,
 				375390802D2DCDFC0067B0BB /* ConfigurableCell.swift in Sources */,
 				375390872D2DCE690067B0BB /* NiblessTableViewHeaderFooterView.swift in Sources */,
 				375390592D2DCB5E0067B0BB /* LaunchViewModel.swift in Sources */,

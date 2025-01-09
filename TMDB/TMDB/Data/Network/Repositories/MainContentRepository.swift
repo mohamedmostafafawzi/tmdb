@@ -18,18 +18,28 @@ public final class MainContentRepository: ContentRepository {
     }
     
     // MARK: - Methods
-    public func getPopularMovies() -> Promise<[Movie]> {
+    public func getPopularMovies(page: Int) -> Promise<ResultContainer<[Movie]>> {
         func getPopularMoviesResponse() -> Promise<ResultResponseContainer<[MovieDTO]>> {
-            return networkService.fetchRequest(forRoute: ContentRouter.getPopularMovies)
+            return networkService.fetchRequest(forRoute: ContentRouter.getPopularMovies(page: page))
         }
-        return getPopularMoviesResponse().map { $0.results.map { $0.toDomain() } }
+        return getPopularMoviesResponse().map {
+            ResultContainer(
+                results: $0.results.map { $0.toDomain() },
+                totalPages: $0.totalPages
+            )
+        }
     }
     
-    public func searchMovies(query: String) -> Promise<[Movie]> {
+    public func searchMovies(query: String, page: Int) -> Promise<ResultContainer<[Movie]>> {
         func searchMoviesResponse() -> Promise<ResultResponseContainer<[MovieDTO]>> {
-            return networkService.fetchRequest(forRoute: ContentRouter.searchMovies(query: query))
+            return networkService.fetchRequest(forRoute: ContentRouter.searchMovies(query: query, page: page))
         }
-        return searchMoviesResponse().map { $0.results.map { $0.toDomain() } }
+        return searchMoviesResponse().map {
+            ResultContainer(
+                results: $0.results.map { $0.toDomain() },
+                totalPages: $0.totalPages
+            )
+        }
     }
     
     public func getMovieDetails(movieID: Int) -> Promise<MovieDetails> {
@@ -39,11 +49,16 @@ public final class MainContentRepository: ContentRepository {
         return getMovieDetailsResponse().map { $0.toDomain() }
     }
     
-    public func getSimilarMovies(movieID: Int) -> Promise<[Movie]> {
+    public func getSimilarMovies(movieID: Int, page: Int) -> Promise<ResultContainer<[Movie]>> {
         func getSimilarMoviesResponse() -> Promise<ResultResponseContainer<[MovieDTO]>> {
-            return networkService.fetchRequest(forRoute: ContentRouter.getSimilarMovies(movieID: movieID))
+            return networkService.fetchRequest(forRoute: ContentRouter.getSimilarMovies(movieID: movieID, page: page))
         }
-        return getSimilarMoviesResponse().map { $0.results.map { $0.toDomain() } }
+        return getSimilarMoviesResponse().map {
+            ResultContainer(
+                results: $0.results.map { $0.toDomain() },
+                totalPages: $0.totalPages
+            )
+        }
     }
     
     public func getMovieCredits(movieID: Int) -> Promise<[Credit]> {

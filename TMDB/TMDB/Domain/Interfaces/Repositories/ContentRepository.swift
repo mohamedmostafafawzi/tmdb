@@ -10,9 +10,9 @@ import Foundation
 import PromiseKit
 
 protocol ContentRepository {
-    func getPopularMovies() -> Promise<[Movie]>
-    func searchMovies(query: String) -> Promise<[Movie]>
+    func getPopularMovies(page: Int) -> Promise<ResultContainer<[Movie]>>
+    func searchMovies(query: String, page: Int) -> Promise<ResultContainer<[Movie]>>
     func getMovieDetails(movieID: Int) -> Promise<MovieDetails>
-    func getSimilarMovies(movieID: Int) -> Promise<[Movie]>
+    func getSimilarMovies(movieID: Int, page: Int) -> Promise<ResultContainer<[Movie]>>
     func getMovieCredits(movieID: Int) -> Promise<[Credit]>
 }

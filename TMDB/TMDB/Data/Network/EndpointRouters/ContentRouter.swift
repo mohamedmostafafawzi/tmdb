@@ -9,10 +9,10 @@
 import Foundation
 
 enum ContentRouter: EndpointRouter {
-    case getPopularMovies
-    case searchMovies(query: String)
+    case getPopularMovies(page: Int)
+    case searchMovies(query: String, page: Int)
     case getMovieDetails(movieID: Int)
-    case getSimilarMovies(movieID: Int)
+    case getSimilarMovies(movieID: Int, page: Int)
     case getMovieCredits(movieID: Int)
     
     
@@ -35,7 +35,7 @@ enum ContentRouter: EndpointRouter {
             return "search/movie"
         case .getMovieDetails(let movieID):
             return "movie/\(movieID)"
-        case .getSimilarMovies(let movieID):
+        case .getSimilarMovies(let movieID, _):
             return "movie/\(movieID)/similar"
         case .getMovieCredits(let movieID):
             return "movie/\(movieID)/credits"
@@ -44,17 +44,20 @@ enum ContentRouter: EndpointRouter {
     
     var parameters: [String: Any]? {
         switch self {
-        case .getPopularMovies:
-            return nil
-        case .searchMovies(let query):
+        case .getPopularMovies(let page):
             return [
-                "query": query
+                "page": page
             ]
-        case .getMovieDetails(let movieID):
-            return nil
-        case .getSimilarMovies(let movieID):
-            return nil
-        case .getMovieCredits(let movieID):
+        case .searchMovies(let query, let page):
+            return [
+                "query": query,
+                "page": page
+            ]
+        case .getSimilarMovies(let movieID, let page):
+            return [
+                "page": page
+            ]
+        default:
             return nil
         }
     }
