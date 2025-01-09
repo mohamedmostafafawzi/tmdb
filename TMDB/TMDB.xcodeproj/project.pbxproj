@@ -74,6 +74,8 @@
 		378DB4FF2D2EF17B0039DAB7 /* EndpointRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB4FE2D2EF17B0039DAB7 /* EndpointRouter.swift */; };
 		378DB5022D2EF1B20039DAB7 /* MainNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5012D2EF1B20039DAB7 /* MainNetworkService.swift */; };
 		378DB5072D2EF24A0039DAB7 /* TMDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5062D2EF24A0039DAB7 /* TMDBError.swift */; };
+		378DB5092D2F60B80039DAB7 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5082D2F60B80039DAB7 /* Movie.swift */; };
+		378DB50B2D2F61C30039DAB7 /* CastMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB50A2D2F61C30039DAB7 /* CastMember.swift */; };
 		B3A12409F260D7C2F9731E64 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +150,8 @@
 		378DB4FE2D2EF17B0039DAB7 /* EndpointRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointRouter.swift; sourceTree = "<group>"; };
 		378DB5012D2EF1B20039DAB7 /* MainNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNetworkService.swift; sourceTree = "<group>"; };
 		378DB5062D2EF24A0039DAB7 /* TMDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBError.swift; sourceTree = "<group>"; };
+		378DB5082D2F60B80039DAB7 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		378DB50A2D2F61C30039DAB7 /* CastMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastMember.swift; sourceTree = "<group>"; };
 		674C08976EDB7377636E4FE6 /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -540,6 +544,8 @@
 		378DB5042D2EF2230039DAB7 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				378DB5082D2F60B80039DAB7 /* Movie.swift */,
+				378DB50A2D2F61C30039DAB7 /* CastMember.swift */,
 				378DB5052D2EF22F0039DAB7 /* Others */,
 			);
 			path = Entities;
@@ -705,6 +711,7 @@
 				378DB4C72D2ECA710039DAB7 /* UILabel+Styling.swift in Sources */,
 				378DB4D62D2ECCB90039DAB7 /* FontManager.swift in Sources */,
 				375390832D2DCE200067B0BB /* NiblessCollectionViewCell.swift in Sources */,
+				378DB5092D2F60B80039DAB7 /* Movie.swift in Sources */,
 				3753905E2D2DCC0A0067B0BB /* HomeRootView.swift in Sources */,
 				375390992D2DCFBD0067B0BB /* UIView+Configuration.swift in Sources */,
 				3753909F2D2DD0090067B0BB /* UITableViewCell+Dequeue.swift in Sources */,
@@ -734,6 +741,7 @@
 				375390622D2DCCB30067B0BB /* HomeViewControllerNavigationDelegate.swift in Sources */,
 				375390532D2DC99D0067B0BB /* LaunchViewControllerNavigationDelegate.swift in Sources */,
 				375390512D2DC91B0067B0BB /* LaunchRootView.swift in Sources */,
+				378DB50B2D2F61C30039DAB7 /* CastMember.swift in Sources */,
 				378DB4D42D2ECB430039DAB7 /* ColorManager.swift in Sources */,
 				375390892D2DCE760067B0BB /* NiblessTableViewCell.swift in Sources */,
 				3753902F2D2DB85D0067B0BB /* DependencyContainer.swift in Sources */,
