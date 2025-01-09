@@ -1,13 +1,12 @@
 // 
-//  CastMember.swift
+//  CrewMember.swift
 //  TMDB
 //
 //  Created by Mohamed Fawzi on 09/01/2025.
 //
 
-import Foundation
 
-public struct CastMember: Credit {
+public struct CrewMember: Credit {
     public let id: Int
     public let name: String
     public let profileURL: String
