@@ -34,7 +34,9 @@ public extension UIColor {
     // MARK: - Background Semantic Colors
     static let background = evaluateColor(light: ColorPalette.white,
                                           dark: ColorPalette.darkestGrey)
-
+    static let cardViewBackground = evaluateColor(light: ColorPalette.white,
+                                                  dark: ColorPalette.darkestGrey)
+    
     static let primaryButtonBackground = evaluateColor(light: ColorPalette.red,
                                                        dark: ColorPalette.red)
     static let navigationBarBackground = evaluateColor(light: ColorPalette.white,

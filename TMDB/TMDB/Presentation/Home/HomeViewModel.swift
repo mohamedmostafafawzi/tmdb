@@ -50,9 +50,12 @@ public class HomeViewModel: ViewModelType {
     // MARK: - Internal logic
     private func getPopularMovies() {
         isLoadingSubject.onNext(true)
-        _ = contentUseCase.getPopularMovies(page: 1)
+        contentUseCase.getPopularMovies(page: 1)
             .done { [weak self] in
                 print("\($0.results.count) of \($0.totalPages)")
+            }
+            .catch(handleError)
+            .finally { [weak self] in
                 self?.isLoadingSubject.onNext(false)
             }
     }
@@ -62,5 +65,12 @@ public class HomeViewModel: ViewModelType {
         input.getPopularMovies.subscribe(onNext: { [weak self] in
             self?.getPopularMovies()
         }).disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Error handling
+extension HomeViewModel {
+    private func handleError(_ error: Error) {
+        
     }
 }

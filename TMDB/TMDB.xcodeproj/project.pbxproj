@@ -93,6 +93,11 @@
 		378DB5382D2F81660039DAB7 /* DepartmentDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5372D2F81660039DAB7 /* DepartmentDTO+Mapping.swift */; };
 		378DB53A2D2F87C60039DAB7 /* ResultContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5392D2F87C60039DAB7 /* ResultContainer.swift */; };
 		378DB53F2D2F8D730039DAB7 /* ContentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB53E2D2F8D730039DAB7 /* ContentUseCase.swift */; };
+		378DB5412D303F750039DAB7 /* HomeSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5402D303F750039DAB7 /* HomeSectionViewModel.swift */; };
+		378DB5432D303F930039DAB7 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5422D303F930039DAB7 /* HomeCellViewModel.swift */; };
+		378DB5482D3046900039DAB7 /* HomeSectionTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5472D3046900039DAB7 /* HomeSectionTableViewHeader.swift */; };
+		378DB54A2D30471D0039DAB7 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5492D30471D0039DAB7 /* HomeTableViewCell.swift */; };
+		378DB54C2D304A4A0039DAB7 /* UIImageView+SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB54B2D304A4A0039DAB7 /* UIImageView+SetImage.swift */; };
 		B3A12409F260D7C2F9731E64 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -186,6 +191,11 @@
 		378DB5372D2F81660039DAB7 /* DepartmentDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DepartmentDTO+Mapping.swift"; sourceTree = "<group>"; };
 		378DB5392D2F87C60039DAB7 /* ResultContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultContainer.swift; sourceTree = "<group>"; };
 		378DB53E2D2F8D730039DAB7 /* ContentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentUseCase.swift; sourceTree = "<group>"; };
+		378DB5402D303F750039DAB7 /* HomeSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionViewModel.swift; sourceTree = "<group>"; };
+		378DB5422D303F930039DAB7 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
+		378DB5472D3046900039DAB7 /* HomeSectionTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionTableViewHeader.swift; sourceTree = "<group>"; };
+		378DB5492D30471D0039DAB7 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		378DB54B2D304A4A0039DAB7 /* UIImageView+SetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+SetImage.swift"; sourceTree = "<group>"; };
 		674C08976EDB7377636E4FE6 /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -435,6 +445,7 @@
 		3753905A2D2DCB9B0067B0BB /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				378DB5442D3045240039DAB7 /* Cells */,
 				3753905B2D2DCBB50067B0BB /* HomeViewController.swift */,
 				3753905D2D2DCC0A0067B0BB /* HomeRootView.swift */,
 				3753905F2D2DCC660067B0BB /* HomeViewModel.swift */,
@@ -504,6 +515,7 @@
 		375390972D2DCF9C0067B0BB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				378DB54B2D304A4A0039DAB7 /* UIImageView+SetImage.swift */,
 				375390982D2DCFBD0067B0BB /* UIView+Configuration.swift */,
 				3753909A2D2DCFD70067B0BB /* UIColor+Hex.swift */,
 				3753909C2D2DCFED0067B0BB /* UICollectionViewCell+Dequeue.swift */,
@@ -674,6 +686,33 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
+		378DB5442D3045240039DAB7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				378DB5462D3045630039DAB7 /* HomeTableViewCell */,
+				378DB5452D30452C0039DAB7 /* HomeSectionTableViewHeader */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		378DB5452D30452C0039DAB7 /* HomeSectionTableViewHeader */ = {
+			isa = PBXGroup;
+			children = (
+				378DB5472D3046900039DAB7 /* HomeSectionTableViewHeader.swift */,
+				378DB5402D303F750039DAB7 /* HomeSectionViewModel.swift */,
+			);
+			path = HomeSectionTableViewHeader;
+			sourceTree = "<group>";
+		};
+		378DB5462D3045630039DAB7 /* HomeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				378DB5492D30471D0039DAB7 /* HomeTableViewCell.swift */,
+				378DB5422D303F930039DAB7 /* HomeCellViewModel.swift */,
+			);
+			path = HomeTableViewCell;
+			sourceTree = "<group>";
+		};
 		AA5C5E495F8542372B33D139 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -835,9 +874,11 @@
 				378DB5282D2F80380039DAB7 /* CrewMember.swift in Sources */,
 				378DB5092D2F60B80039DAB7 /* Movie.swift in Sources */,
 				3753905E2D2DCC0A0067B0BB /* HomeRootView.swift in Sources */,
+				378DB5412D303F750039DAB7 /* HomeSectionViewModel.swift in Sources */,
 				375390992D2DCFBD0067B0BB /* UIView+Configuration.swift in Sources */,
 				378DB5302D2F80940039DAB7 /* MovieDetailsDTO+Mapping.swift in Sources */,
 				378DB51D2D2F6C6F0039DAB7 /* ContentRepository.swift in Sources */,
+				378DB5482D3046900039DAB7 /* HomeSectionTableViewHeader.swift in Sources */,
 				378DB5262D2F7C150039DAB7 /* ResultResponseContainer.swift in Sources */,
 				3753909F2D2DD0090067B0BB /* UITableViewCell+Dequeue.swift in Sources */,
 				3753908B2D2DCEA20067B0BB /* NiblessViewController.swift in Sources */,
@@ -869,6 +910,7 @@
 				378DB4FD2D2EF1600039DAB7 /* NetworkService.swift in Sources */,
 				378DB4CB2D2ECABE0039DAB7 /* UIImageView+Styling.swift in Sources */,
 				378DB52E2D2F80730039DAB7 /* MovieDetails.swift in Sources */,
+				378DB54C2D304A4A0039DAB7 /* UIImageView+SetImage.swift in Sources */,
 				375390462D2DC70A0067B0BB /* HomeCoordinatorFactory.swift in Sources */,
 				375390622D2DCCB30067B0BB /* HomeViewControllerNavigationDelegate.swift in Sources */,
 				375390532D2DC99D0067B0BB /* LaunchViewControllerNavigationDelegate.swift in Sources */,
@@ -880,6 +922,7 @@
 				378DB4D12D2ECAFE0039DAB7 /* UIActivityIndicator+Styling.swift in Sources */,
 				378DB4CF2D2ECAE70039DAB7 /* UISearchBar+Styling.swift in Sources */,
 				3753909D2D2DCFED0067B0BB /* UICollectionViewCell+Dequeue.swift in Sources */,
+				378DB54A2D30471D0039DAB7 /* HomeTableViewCell.swift in Sources */,
 				3753907E2D2DCDEE0067B0BB /* NavigationBarConfigurator.swift in Sources */,
 				3753904C2D2DC7E60067B0BB /* HomeDependencyContainer.swift in Sources */,
 				3753905C2D2DCBB50067B0BB /* HomeViewController.swift in Sources */,
@@ -889,6 +932,7 @@
 				3753907C2D2DCDD10067B0BB /* TableViewDataSourceConfigurator.swift in Sources */,
 				378DB4DE2D2ECD860039DAB7 /* ViewModelType.swift in Sources */,
 				3753903B2D2DC6100067B0BB /* LaunchCoordinator.swift in Sources */,
+				378DB5432D303F930039DAB7 /* HomeCellViewModel.swift in Sources */,
 				3753904A2D2DC7AA0067B0BB /* LaunchDependencyContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
