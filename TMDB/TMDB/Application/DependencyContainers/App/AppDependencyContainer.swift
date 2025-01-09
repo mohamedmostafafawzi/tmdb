@@ -16,12 +16,16 @@ public class AppDependencyContainer {
     
     // MARK: Long-lived dependencies
     private weak var sharedAppCoordinator: AppCoordinator!
-    
+    private let sharedNetworkService: NetworkService
+
     // MARK: - Initializer
     init(window: UIWindow) {
         // Initialize main properties
         self.window = window
         self.rootVC = RootViewController()
+        
+        // Initialize shared instances
+        sharedNetworkService = MainNetworkService()
     }
     
     // MARK: - Methods
@@ -52,7 +56,8 @@ extension AppDependencyContainer: HomeCoordinatorFactory {
     func makeHomeCoordinator() -> HomeCoordinator {
         let homeDependencyContainer = HomeDependencyContainer(
             presenter: rootVC,
-            homeCoordinatorNavigationDelegate: sharedAppCoordinator
+            homeCoordinatorNavigationDelegate: sharedAppCoordinator,
+            contentRepository: MainContentRepository(networkService: sharedNetworkService)
         )
         return homeDependencyContainer.makeAndStoreCoordinator()
     }

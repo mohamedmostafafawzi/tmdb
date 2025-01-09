@@ -33,6 +33,8 @@ public class HomeViewController: NiblessViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.input.getPopularMovies.onNext(())
+        
     }
     
 }
