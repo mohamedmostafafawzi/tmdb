@@ -37,7 +37,8 @@ class HomeCoordinator: Coordinator {
         completionHandler: CoordinatorStartCompletionHandler?
     ) {
         homeVC = homeViewControllerFactory.makeHomeViewController()
-        presenter.addFullScreen(childViewController: homeVC!)
+        let navigationVC = UINavigationController(rootViewController: homeVC!)
+        presenter.addFullScreen(childViewController: navigationVC)
         completionHandler?()
     }
     
@@ -54,7 +55,7 @@ class HomeCoordinator: Coordinator {
 extension HomeCoordinator: HomeViewControllerNavigationDelegate {
     func viewDetails(of movieID: Int) {
         let movieDetailsVC = movieDetailsViewControllerFactory.makeMovieDetailsViewController(with: movieID)
-        presenter.present(movieDetailsVC, animated: true)
+        homeVC?.navigationController?.pushViewController(movieDetailsVC, animated: true)
     }
 }
 
