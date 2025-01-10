@@ -8,16 +8,16 @@
 import Foundation
 
 extension String {
-    func toYear() -> String {
+    func toYear() -> Int {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
         if let date = dateFormatter.date(from: self) {
             let calendar = Calendar.current
             let year = calendar.component(.year, from: date)
-            return String(year)
+            return year
         }
-        return "Unknown"
+        return 0000
     }
     
     func toFormattedDate() -> String {

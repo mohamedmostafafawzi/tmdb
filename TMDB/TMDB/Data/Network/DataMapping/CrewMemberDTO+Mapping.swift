@@ -9,20 +9,25 @@
 // MARK: - CrewMemberDTO
 struct CrewMemberDTO: Codable {
     let id: Int
-    let name: String
-    let profilePath: String
+    let name: String?
+    let profilePath: String?
     let popularity: Double
-    let department: DepartmentDTO
+    let department: DepartmentDTO?
+    
+    var profileURL: String? {
+        guard let profilePath = profilePath else { return nil }
+        return "\(Config.imageBaseURL)\(Config.ImageSize.Poster.original.rawValue)\(profilePath)"
+    }
 }
 
 extension CrewMemberDTO {
     func toDomain() -> CrewMember {
         .init(
             id: id,
-            name: name,
-            profileURL: Config.imageBaseURL + Config.ImageSize.Profile.original.rawValue + profilePath,
+            name: name ?? "Unknown",
+            profileURL: profileURL,
             popularity: popularity,
-            department: department.toDomain()
+            department: (department ?? .unknown).toDomain()
         )
     }
 }

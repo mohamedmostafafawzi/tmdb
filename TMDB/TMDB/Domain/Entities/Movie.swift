@@ -11,7 +11,7 @@ public struct Movie {
     let id: Int
     let title: String
     let overview: String
-    let releaseYear: String
-    let posterURL: String
+    let releaseYear: Int
+    let posterURL: String?
     let isOnWatchlist: Bool
 }

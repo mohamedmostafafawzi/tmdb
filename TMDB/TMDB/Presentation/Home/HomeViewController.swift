@@ -41,7 +41,8 @@ public class HomeViewController: NiblessViewController {
         viewModel.input.getPopularMovies.onNext(())
         
         bindLoading()
-        
+        bindSearchTextField()
+        subscribeToPagination()
     }
     
     private func configureHomeTableView(tableView: UITableView) {
@@ -52,6 +53,21 @@ public class HomeViewController: NiblessViewController {
             tableView.reloadData()
         }).disposed(by: disposeBag)
         
+    }
+    
+    private func subscribeToPagination() {
+        self.viewModel.output.paginationManager.paginate(rootView.tableView) { [weak self] in
+            guard let self else { return }
+            self.viewModel.output.paginationManager.isPaginating.accept(true)
+            viewModel.input.paginate.onNext(())
+        }
+    }
+    
+    private func bindSearchTextField() {
+        rootView.searchTextField.textField.rx.text.orEmpty
+            .distinctUntilChanged()
+            .bind(to: viewModel.input.searchTFText)
+            .disposed(by: disposeBag)
     }
     
     private func bindLoading() {

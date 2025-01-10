@@ -10,8 +10,8 @@ public struct MovieDetails {
     let id: Int
     let title: String
     let overview: String
-    let posterURL: String
-    let backDropURL: String
+    let posterURL: String?
+    let backDropURL: String?
     let tagline: String
     let revenue: Double
     let releaseDate: String

@@ -99,6 +99,10 @@
 		378DB54A2D30471D0039DAB7 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5492D30471D0039DAB7 /* HomeTableViewCell.swift */; };
 		378DB54C2D304A4A0039DAB7 /* UIImageView+SetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB54B2D304A4A0039DAB7 /* UIImageView+SetImage.swift */; };
 		378DB5502D3054C40039DAB7 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB54F2D3054C40039DAB7 /* SearchTextField.swift */; };
+		378DB5532D308C050039DAB7 /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5522D308C050039DAB7 /* PaginationManager.swift */; };
+		378DB5552D308F500039DAB7 /* RxCollectionView+Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5542D308F500039DAB7 /* RxCollectionView+Pagination.swift */; };
+		378DB5572D308F690039DAB7 /* RxTableView+Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5562D308F690039DAB7 /* RxTableView+Pagination.swift */; };
+		378DB5592D3090FE0039DAB7 /* BehaviorRelay+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5582D3090FE0039DAB7 /* BehaviorRelay+Extensions.swift */; };
 		B3A12409F260D7C2F9731E64 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +202,10 @@
 		378DB5492D30471D0039DAB7 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		378DB54B2D304A4A0039DAB7 /* UIImageView+SetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+SetImage.swift"; sourceTree = "<group>"; };
 		378DB54F2D3054C40039DAB7 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		378DB5522D308C050039DAB7 /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
+		378DB5542D308F500039DAB7 /* RxCollectionView+Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxCollectionView+Pagination.swift"; sourceTree = "<group>"; };
+		378DB5562D308F690039DAB7 /* RxTableView+Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxTableView+Pagination.swift"; sourceTree = "<group>"; };
+		378DB5582D3090FE0039DAB7 /* BehaviorRelay+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorRelay+Extensions.swift"; sourceTree = "<group>"; };
 		674C08976EDB7377636E4FE6 /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -460,6 +468,7 @@
 		375390742D2DCD6C0067B0BB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				378DB5512D308C000039DAB7 /* Managers */,
 				375390752D2DCD710067B0BB /* UIKit */,
 				378DB4D92D2ECD4C0039DAB7 /* Extensions */,
 				378DB4DC2D2ECD750039DAB7 /* Protocols */,
@@ -555,6 +564,9 @@
 		378DB4D92D2ECD4C0039DAB7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				378DB5582D3090FE0039DAB7 /* BehaviorRelay+Extensions.swift */,
+				378DB5562D308F690039DAB7 /* RxTableView+Pagination.swift */,
+				378DB5542D308F500039DAB7 /* RxCollectionView+Pagination.swift */,
 				378DB5222D2F71810039DAB7 /* String+Extensions.swift */,
 			);
 			path = Extensions;
@@ -732,6 +744,14 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
+		378DB5512D308C000039DAB7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				378DB5522D308C050039DAB7 /* PaginationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		AA5C5E495F8542372B33D139 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,9 +924,11 @@
 				3753908B2D2DCEA20067B0BB /* NiblessViewController.swift in Sources */,
 				375390342D2DC56C0067B0BB /* Coordinator.swift in Sources */,
 				375390442D2DC6F50067B0BB /* HomeCoordinatorNavigationDelegate.swift in Sources */,
+				378DB5572D308F690039DAB7 /* RxTableView+Pagination.swift in Sources */,
 				378DB4FF2D2EF17B0039DAB7 /* EndpointRouter.swift in Sources */,
 				378DB5022D2EF1B20039DAB7 /* MainNetworkService.swift in Sources */,
 				375390422D2DC69D0067B0BB /* HomeCoordinator.swift in Sources */,
+				378DB5552D308F500039DAB7 /* RxCollectionView+Pagination.swift in Sources */,
 				3753908F2D2DCEE50067B0BB /* NiblessView.swift in Sources */,
 				375390852D2DCE3D0067B0BB /* NiblessCollectionReusableView.swift in Sources */,
 				3753902C2D2DB81E0067B0BB /* RootViewController.swift in Sources */,
@@ -921,12 +943,14 @@
 				378DB52A2D2F804A0039DAB7 /* Department.swift in Sources */,
 				378DB51F2D2F6E200039DAB7 /* MovieDTO+Mapping.swift in Sources */,
 				378DB4C92D2ECA940039DAB7 /* UIButton+Styling.swift in Sources */,
+				378DB5592D3090FE0039DAB7 /* BehaviorRelay+Extensions.swift in Sources */,
 				378DB5342D2F811D0039DAB7 /* CastMemberDTO+Mapping.swift in Sources */,
 				378DB4F92D2EF13F0039DAB7 /* Config.swift in Sources */,
 				375390552D2DC9B60067B0BB /* LaunchViewControllerFactory.swift in Sources */,
 				378DB5232D2F71810039DAB7 /* String+Extensions.swift in Sources */,
 				3753903D2D2DC63E0067B0BB /* LaunchCoordinatorNavigationDelegate.swift in Sources */,
 				375390372D2DC5B70067B0BB /* AppCoordinator.swift in Sources */,
+				378DB5532D308C050039DAB7 /* PaginationManager.swift in Sources */,
 				378DB4FD2D2EF1600039DAB7 /* NetworkService.swift in Sources */,
 				378DB4CB2D2ECABE0039DAB7 /* UIImageView+Styling.swift in Sources */,
 				378DB52E2D2F80730039DAB7 /* MovieDetails.swift in Sources */,

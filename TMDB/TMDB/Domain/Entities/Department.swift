@@ -9,4 +9,5 @@
 public enum Department {
     case acting
     case directing
+    case uknown
 }

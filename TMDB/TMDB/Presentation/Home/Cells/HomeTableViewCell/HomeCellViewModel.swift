@@ -14,8 +14,8 @@ public struct HomeCellViewModel {
     let id: Int
     let title: String
     let overview: String
-    let imageURL: String
-    let releaseYear: String
+    let imageURL: String?
+    let releaseYear: Int
     let isOnWatchlist: Bool
 
     // MARK: - Initializers

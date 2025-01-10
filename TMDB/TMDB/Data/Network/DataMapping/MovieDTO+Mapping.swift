@@ -10,20 +10,24 @@ import Foundation
 // MARK: - MovieDTO
 struct MovieDTO: Codable {
     let id: Int
-    let title: String
-    let overview: String
-    let releaseDate: String
-    let posterPath: String
+    let title: String?
+    let overview: String?
+    let releaseDate: String?
+    let posterPath: String?
+    var posterURL: String? {
+        guard let posterPath = posterPath else { return nil }
+        return "\(Config.imageBaseURL)\(Config.ImageSize.Poster.original.rawValue)\(posterPath)"
+    }
 }
 
 extension MovieDTO {
     func toDomain() -> Movie {
         .init(
             id: id,
-            title: title,
-            overview: overview,
-            releaseYear: releaseDate.toYear(),
-            posterURL: Config.imageBaseURL + Config.ImageSize.Poster.original.rawValue + posterPath,
+            title: title ?? "Unknown Title",
+            overview: overview ?? "",
+            releaseYear: (releaseDate ?? "").toYear(),
+            posterURL: posterURL,
             isOnWatchlist: true //TODO: - Check saved movieIDs
         )
     }

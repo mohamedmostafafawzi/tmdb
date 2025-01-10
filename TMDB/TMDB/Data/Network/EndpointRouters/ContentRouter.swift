@@ -30,7 +30,7 @@ enum ContentRouter: EndpointRouter {
     var path: String {
         switch self {
         case .getPopularMovies:
-            return "discover/movie"
+            return "movie/popular"
         case .searchMovies:
             return "search/movie"
         case .getMovieDetails(let movieID):
@@ -53,7 +53,7 @@ enum ContentRouter: EndpointRouter {
                 "query": query,
                 "page": page
             ]
-        case .getSimilarMovies(let movieID, let page):
+        case .getSimilarMovies( _, let page):
             return [
                 "page": page
             ]

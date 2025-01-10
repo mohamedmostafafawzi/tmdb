@@ -9,28 +9,37 @@
 // MARK: - MovieDetailsDTO
 struct MovieDetailsDTO: Codable {
     let id: Int
-    let title: String
-    let overview: String
-    let posterPath: String
-    let backdropPath: String
-    let tagline: String
+    let title: String?
+    let overview: String?
+    let posterPath: String?
+    let backdropPath: String?
+    let tagline: String?
     let revenue: Double
-    let releaseDate: String
-    let status: String
+    let releaseDate: String?
+    let status: String?
+    
+    var posterURL: String? {
+        guard let posterPath = posterPath else { return nil }
+        return "\(Config.imageBaseURL)\(Config.ImageSize.Poster.original.rawValue)\(posterPath)"
+    }
+    var backdropURL: String? {
+        guard let backdropPath = backdropPath else { return nil }
+        return "\(Config.imageBaseURL)\(Config.ImageSize.Poster.original.rawValue)\(backdropPath)"
+    }
 }
 
 extension MovieDetailsDTO {
     func toDomain() -> MovieDetails {
         .init(
             id: id,
-            title: title,
-            overview: overview,
-            posterURL: Config.imageBaseURL + Config.ImageSize.Poster.original.rawValue + posterPath,
-            backDropURL: Config.imageBaseURL + Config.ImageSize.Backdrop.original.rawValue + backdropPath,
-            tagline: tagline,
+            title: title ?? "Unknown Title",
+            overview: overview ?? "",
+            posterURL: posterURL,
+            backDropURL: backdropURL,
+            tagline: tagline ?? "",
             revenue: revenue,
-            releaseDate: releaseDate.toFormattedDate(),
-            status: status,
+            releaseDate: (releaseDate ?? "").toFormattedDate(),
+            status: status ?? "Unknown",
             isOnWatchlist: false // TODO: - Check saved movieIDs
         )
     }

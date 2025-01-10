@@ -10,6 +10,7 @@
 enum DepartmentDTO: String, Codable {
     case acting
     case directing
+    case unknown
 }
 
 extension DepartmentDTO {
@@ -17,6 +18,7 @@ extension DepartmentDTO {
         switch self {
         case .acting: return .acting
         case .directing: return .directing
+        case .unknown: return .uknown
         }
     }
 }

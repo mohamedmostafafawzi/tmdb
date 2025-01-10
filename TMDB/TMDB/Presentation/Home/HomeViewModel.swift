@@ -16,13 +16,16 @@ public class HomeViewModel: ViewModelType {
     public var output: HomeViewModel.Output
     
     public struct Input {
+        let searchTFText = PublishSubject<String>()
         let getPopularMovies = PublishSubject<()>()
         let homeItemSelected = PublishSubject<HomeCellViewModel>()
+        let paginate = PublishSubject<()>()
     }
     
     public struct Output {
         let homeSections: BehaviorRelay<[HomeSectionViewModel]>
         let isLoading: Driver<Bool>
+        let paginationManager: PaginationManager
     }
         
     // MARK: - Subjects
@@ -32,6 +35,9 @@ public class HomeViewModel: ViewModelType {
     // MARK: - Properties
     private weak var navigationDelegate: HomeViewControllerNavigationDelegate?
     private let contentUseCase: ContentUseCase
+    private let paginationManager = PaginationManager()
+    private var moviesByYear: [Int: [Movie]] = [:]  // Movies grouped by year
+    private var years: [Int] = []                   // Sorted years as strings
     private let disposeBag = DisposeBag()
     
     // MARK: - Initializer
@@ -44,45 +50,91 @@ public class HomeViewModel: ViewModelType {
         // Configure input & output
         input = Input()
         output = Output(homeSections: homeSectionsSubject,
-                        isLoading: isLoadingSubject.asDriver(onErrorJustReturn: false))
+                        isLoading: isLoadingSubject.asDriver(onErrorJustReturn: false),
+                        paginationManager: paginationManager)
         
         // Subscribe for input events
         subscribeToGetPopularMovies()
         subscribeToHomeItemSelected()
+        subscribeToPaginate()
 
     }
     
     // MARK: - Internal logic
     private func getPopularMovies() {
         isLoadingSubject.onNext(true)
-        // TODO: - Pagination
-        contentUseCase.getPopularMovies(page: 1)
+        contentUseCase.getPopularMovies(page: paginationManager.pageNumber.value)
             .done { [weak self] results in
                 guard let self else { return }
-                configureSections(with: results.results)
+                processMovies(results.results)
+                self.paginationManager.totalPages.accept(results.totalPages)
             }
             .catch(handleError)
             .finally { [weak self] in
                 self?.isLoadingSubject.onNext(false)
+                self?.paginationManager.isPaginating.accept(false)
             }
     }
     
-    private func configureSections(with movies: [Movie]) {
-        // Group movies by their release year
-        let groupedMovies = Dictionary(grouping: movies, by: { $0.releaseYear })
-        
-        // Transform groups into sections
-        let sections = groupedMovies.map { year, movies in
-            HomeSectionViewModel(
-                title: year,
-                items: movies.map { HomeCellViewModel(fromDomain: $0) }
-            )
-        }.sorted { $0.title < $1.title }
-        // TODO: - Append to it after implementing pagination
-        self.homeSectionsSubject.accept(sections)
+    private func processMovies(_ newMovies: [Movie]) {
+        for movie in newMovies {
+            let year = movie.releaseYear
+
+            // Add to the dictionary
+            if moviesByYear[year] == nil {
+                moviesByYear[year] = []
+                years.append(year)
+                // Keep years sorted in descending order
+                years.sort(by: >)
+            }
+
+            moviesByYear[year]?.append(movie)
+        }
+
+        // Update sections
+        updateSections()
+    }
+    
+    private func updateSections() {
+        var sections: [HomeSectionViewModel] = []
+
+        // Iterate over sorted years
+        for year in years {
+            if let movies = moviesByYear[year] {
+                let section = HomeSectionViewModel(
+                    title: String(year),
+                    items: movies.map { HomeCellViewModel(fromDomain: $0) }
+                )
+                sections.append(section)
+            }
+        }
+
+        // Update the relay with the new sections
+        homeSectionsSubject.accept(sections)
+    }
+    
+    private func resetSections() {
+        moviesByYear = [:]
+        years = []
     }
     
     // MARK: - Input events subscription
+    private func subscribeToSearchTFText() {
+        input.searchTFText
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .skip(1)
+            .subscribe(onNext: { [weak self] keyword in
+                self?.homeSectionsSubject.accept([])
+                self?.resetSections()
+                self?.paginationManager.resetPagination.onNext(())
+                if !keyword.isEmpty {
+                    // TODO: Search for the keyword
+                } else {
+                    self?.getPopularMovies()
+                }
+        }).disposed(by: disposeBag)
+    }
+    
     private func subscribeToGetPopularMovies() {
         input.getPopularMovies.subscribe(onNext: { [weak self] in
             self?.getPopularMovies()
@@ -94,6 +146,18 @@ public class HomeViewModel: ViewModelType {
             .subscribe(onNext: { [weak self] item in
                 // TODO: Navigate to movie details
                 print("Title: \(item.title) with id: \(item.id) Selected")
+            }).disposed(by: disposeBag)
+    }
+    
+    private func subscribeToPaginate() {
+        input.paginate
+            .withLatestFrom(input.searchTFText)
+            .subscribe(onNext: { [weak self] keyword in
+                if !keyword.isEmpty {
+                   // TODO: Search
+                } else {
+                    self?.getPopularMovies()
+                }
             }).disposed(by: disposeBag)
     }
 }

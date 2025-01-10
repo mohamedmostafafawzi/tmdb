@@ -9,7 +9,7 @@
 public protocol Credit {
     var id: Int { get }
     var name: String { get }
-    var profileURL: String { get }
+    var profileURL: String? { get }
     var popularity: Double { get }
     var department: Department { get }
 }

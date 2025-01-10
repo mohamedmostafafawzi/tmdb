@@ -69,8 +69,6 @@ private struct ColorPalette {
     static let lightGrey = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     static let lightestGrey = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
     static let white = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    
-
 }
 
 // MARK: - Helpers
