@@ -36,6 +36,7 @@ public class HomeViewModel: ViewModelType {
     private weak var navigationDelegate: HomeViewControllerNavigationDelegate?
     private let contentUseCase: ContentUseCase
     private let paginationManager = PaginationManager()
+    private var popularMovies: [Movie] = []
     private var moviesByYear: [Int: [Movie]] = [:]  // Movies grouped by year
     private var years: [Int] = []                   // Sorted years as strings
     private let disposeBag = DisposeBag()
@@ -57,13 +58,36 @@ public class HomeViewModel: ViewModelType {
         subscribeToGetPopularMovies()
         subscribeToHomeItemSelected()
         subscribeToPaginate()
-
+        subscribeToSearchTFText()
     }
     
     // MARK: - Internal logic
     private func getPopularMovies() {
         isLoadingSubject.onNext(true)
         contentUseCase.getPopularMovies(page: paginationManager.pageNumber.value)
+            .done { [weak self] results in
+                guard let self else { return }
+                if popularMovies.isEmpty {
+                    popularMovies = results.results
+                } else {
+                    popularMovies.append(contentsOf: results.results)
+                }
+                
+                let popularSection = HomeSectionViewModel(title:"Popular Movies" ,
+                                                          items: popularMovies.map { HomeCellViewModel(fromDomain: $0) })
+                self.homeSectionsSubject.accept([popularSection])
+                self.paginationManager.totalPages.accept(results.totalPages)
+            }
+            .catch(handleError)
+            .finally { [weak self] in
+                self?.isLoadingSubject.onNext(false)
+                self?.paginationManager.isPaginating.accept(false)
+            }
+    }
+    
+    private func searchMovies(query: String) {
+        isLoadingSubject.onNext(true)
+        contentUseCase.searchMovies(query: query, page: paginationManager.pageNumber.value)
             .done { [weak self] results in
                 guard let self else { return }
                 processMovies(results.results)
@@ -76,6 +100,7 @@ public class HomeViewModel: ViewModelType {
             }
     }
     
+    // MARK: - Helper functions
     private func processMovies(_ newMovies: [Movie]) {
         for movie in newMovies {
             let year = movie.releaseYear
@@ -116,6 +141,7 @@ public class HomeViewModel: ViewModelType {
     private func resetSections() {
         moviesByYear = [:]
         years = []
+        popularMovies = []
     }
     
     // MARK: - Input events subscription
@@ -128,7 +154,7 @@ public class HomeViewModel: ViewModelType {
                 self?.resetSections()
                 self?.paginationManager.resetPagination.onNext(())
                 if !keyword.isEmpty {
-                    // TODO: Search for the keyword
+                    self?.searchMovies(query: keyword)
                 } else {
                     self?.getPopularMovies()
                 }
@@ -154,7 +180,7 @@ public class HomeViewModel: ViewModelType {
             .withLatestFrom(input.searchTFText)
             .subscribe(onNext: { [weak self] keyword in
                 if !keyword.isEmpty {
-                   // TODO: Search
+                    self?.searchMovies(query: keyword)
                 } else {
                     self?.getPopularMovies()
                 }

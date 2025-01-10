@@ -51,7 +51,8 @@ enum ContentRouter: EndpointRouter {
         case .searchMovies(let query, let page):
             return [
                 "query": query,
-                "page": page
+                "page": page,
+                "sort_by": "release_date.desc"
             ]
         case .getSimilarMovies( _, let page):
             return [
