@@ -99,8 +99,8 @@ extension MovieDetailsViewController: UITableViewDataSource, UITableViewDelegate
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(DetailsTableViewCell.self)!
-            cell.addToWishlistTapped = { [unowned self] movieID in
-                self.viewModel.input.addToWishlistSelected.onNext(movieID)
+            cell.wishlistTapped = { [unowned self] movieID in
+                self.viewModel.input.wishlistSelected.onNext(movieID)
             }
             if let item = viewModel.output.movieDetails.value {
                 cell.configure(with: item)

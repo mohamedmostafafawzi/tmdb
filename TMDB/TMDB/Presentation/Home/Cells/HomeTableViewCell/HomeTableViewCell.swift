@@ -23,8 +23,7 @@ public class HomeTableViewCell: NiblessTableViewCell {
                                      numberOfLines: 1)
     let overviewLabel = UILabel().style(font: .regular(size: .bodyS),
                                         textColor: .secondaryText)
-    let isOnWatchlistImageView = UIImageView().style(tintColor: .tertiary,
-                                                     image: UIImage(systemName: "bookmark.fill"),
+    let isOnWatchlistImageView = UIImageView().style(image: UIImage(systemName: "bookmark.fill"),
                                                      contentMode: .scaleAspectFill,
                                                      cornerRadius: Dimensions.cornerRadius)
 
@@ -41,7 +40,11 @@ public class HomeTableViewCell: NiblessTableViewCell {
         )
         titleLabel.text = viewModel.title
         overviewLabel.text = viewModel.overview
-        isOnWatchlistImageView.isHidden = !viewModel.isOnWatchlist
+        isOnWatchlistImageView.tintColor = viewModel.isOnWatchlist ? .tertiary : .secondary
+        isOnWatchlistImageView.image = viewModel.isOnWatchlist ?
+        UIImage(systemName: "bookmark.fill"):
+        UIImage(systemName: "bookmark")
+
     }
     
     public override func viewHierarchyDidConfigure() {

@@ -18,7 +18,7 @@ public class MovieDetailsViewModel: ViewModelType {
     public struct Input {
         let getDetails = PublishSubject<()>()
         let searchTFText = PublishSubject<String>()
-        let addToWishlistSelected = PublishSubject<Int>()
+        let wishlistSelected = PublishSubject<DetailsCellViewModel>()
     }
     
     public struct Output {
@@ -60,7 +60,7 @@ public class MovieDetailsViewModel: ViewModelType {
         
         // Subscribe for input events
         subscribeToGetMovieDetails()
-        subscribeToAddToWishlistSelected()
+        subscribeToWishlistSelected()
     }
     
     // MARK: - Internal logic
@@ -145,10 +145,11 @@ public class MovieDetailsViewModel: ViewModelType {
         }).disposed(by: disposeBag)
     }
     
-    private func subscribeToAddToWishlistSelected() {
-        input.addToWishlistSelected
-            .subscribe(onNext: { [weak self] movieID in
+    private func subscribeToWishlistSelected() {
+        input.wishlistSelected
+            .subscribe(onNext: { [weak self] movie in
                 // TODO: Add movie to wishlist
+                print("\(movie.id) | \(movie.title) is \(movie.isOnWatchlist) on watchlist")
             }).disposed(by: disposeBag)
     }
 }

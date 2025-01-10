@@ -28,7 +28,7 @@ extension MovieDTO {
             overview: overview ?? "",
             releaseYear: (releaseDate ?? "").toYear(),
             posterURL: posterURL,
-            isOnWatchlist: true //TODO: - Check saved movieIDs
+            isOnWatchlist: false //TODO: - Check saved movieIDs
         )
     }
 }
