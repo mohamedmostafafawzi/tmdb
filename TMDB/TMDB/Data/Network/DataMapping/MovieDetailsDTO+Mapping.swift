@@ -40,7 +40,7 @@ extension MovieDetailsDTO {
             revenue: revenue,
             releaseDate: (releaseDate ?? "").toFormattedDate(),
             status: status ?? "Unknown",
-            isOnWatchlist: false // TODO: - Check saved movieIDs
+            isOnWatchlist: WishlistDataStore.shared.retrieve().contains(id)
         )
     }
 }

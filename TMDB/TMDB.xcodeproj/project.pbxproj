@@ -113,6 +113,7 @@
 		378DB5702D30CB460039DAB7 /* CardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB56F2D30CB460039DAB7 /* CardCellViewModel.swift */; };
 		378DB5722D30CC9A0039DAB7 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5712D30CC9A0039DAB7 /* CardCollectionViewCell.swift */; };
 		378DB5762D30CDD50039DAB7 /* DetailsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB5752D30CDD50039DAB7 /* DetailsSectionHeaderView.swift */; };
+		378DB57B2D3100660039DAB7 /* WishlistDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DB57A2D3100660039DAB7 /* WishlistDataStore.swift */; };
 		B3A12409F260D7C2F9731E64 /* Pods_TMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -226,6 +227,7 @@
 		378DB56F2D30CB460039DAB7 /* CardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewModel.swift; sourceTree = "<group>"; };
 		378DB5712D30CC9A0039DAB7 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		378DB5752D30CDD50039DAB7 /* DetailsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSectionHeaderView.swift; sourceTree = "<group>"; };
+		378DB57A2D3100660039DAB7 /* WishlistDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistDataStore.swift; sourceTree = "<group>"; };
 		674C08976EDB7377636E4FE6 /* Pods-TMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDB.debug.xcconfig"; path = "Target Support Files/Pods-TMDB/Pods-TMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		CA3CD7C9B489B598FFBFD258 /* Pods_TMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -296,6 +298,7 @@
 		375390202D2DB6770067B0BB /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				378DB5792D31005E0039DAB7 /* DataStore */,
 				378DB5122D2F67350039DAB7 /* Network */,
 			);
 			path = Data;
@@ -830,6 +833,14 @@
 			path = DetailsSectionHeaderView;
 			sourceTree = "<group>";
 		};
+		378DB5792D31005E0039DAB7 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				378DB57A2D3100660039DAB7 /* WishlistDataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
 		AA5C5E495F8542372B33D139 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -982,6 +993,7 @@
 				378DB5362D2F81350039DAB7 /* CrewMemberDTO+Mapping.swift in Sources */,
 				375390922D2DCF0F0067B0BB /* AnchoredConstraints.swift in Sources */,
 				378DB5502D3054C40039DAB7 /* SearchTextField.swift in Sources */,
+				378DB57B2D3100660039DAB7 /* WishlistDataStore.swift in Sources */,
 				378DB5172D2F67510039DAB7 /* ContentRouter.swift in Sources */,
 				375390642D2DCCD10067B0BB /* HomeViewControllerFactory.swift in Sources */,
 				378DB4D82D2ECD180039DAB7 /* Dimensions.swift in Sources */,

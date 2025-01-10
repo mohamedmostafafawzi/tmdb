@@ -28,7 +28,7 @@ extension MovieDTO {
             overview: overview ?? "",
             releaseYear: (releaseDate ?? "").toYear(),
             posterURL: posterURL,
-            isOnWatchlist: false //TODO: - Check saved movieIDs
+            isOnWatchlist: WishlistDataStore.shared.retrieve().contains(id)
         )
     }
 }

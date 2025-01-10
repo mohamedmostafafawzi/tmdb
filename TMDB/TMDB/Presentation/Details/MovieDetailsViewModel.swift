@@ -148,8 +148,12 @@ public class MovieDetailsViewModel: ViewModelType {
     private func subscribeToWishlistSelected() {
         input.wishlistSelected
             .subscribe(onNext: { [weak self] movie in
-                // TODO: Add movie to wishlist
-                print("\(movie.id) | \(movie.title) is \(movie.isOnWatchlist) on watchlist")
+                if movie.isOnWatchlist {
+                    WishlistDataStore.shared.remove(movieID: movie.id)
+                } else {
+                    WishlistDataStore.shared.add(movieID: movie.id)
+                }
+                self?.getMovieDetails()
             }).disposed(by: disposeBag)
     }
 }
