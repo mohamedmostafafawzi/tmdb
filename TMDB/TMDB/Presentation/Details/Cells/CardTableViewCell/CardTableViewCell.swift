@@ -13,7 +13,7 @@ public class CardTableViewCell: NiblessTableViewCell {
     // MARK: - Views
     private lazy var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = CGSize(width: 200, height: 230)
+        collectionViewLayout.itemSize = CGSize(width: 100, height: 190)
         collectionViewLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .clear
@@ -66,7 +66,7 @@ extension CardTableViewCell {
     public override func configureViewHierarchy() {
         contentView.add(collectionView, then: {
             $0.fillSuperview()
-            $0.constrainHeight(240)
+            $0.constrainHeight(190)
         })
     }
 }

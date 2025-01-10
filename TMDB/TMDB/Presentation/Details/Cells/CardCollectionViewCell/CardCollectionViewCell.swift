@@ -14,10 +14,10 @@ public class CardCollectionViewCell: NiblessCollectionViewCell {
     private let cardImageView = UIImageView().style(image: UIImage(named: "poster-placeholder"),
                                                      contentMode: .scaleAspectFill,
                                                      cornerRadius: Dimensions.cornerRadius)
-    private let titleLabel = UILabel().style(font: .bold(size: .bodyL),
+    private let titleLabel = UILabel().style(font: .medium(size: .bodyS),
                                              textColor: .primaryText,
-                                             textAlignment: .left,
-                                             numberOfLines: 1)
+                                             textAlignment: .center,
+                                             numberOfLines: 2)
     
     // MARK: - Methods
     func configure(with viewModel: CardCellViewModel) {
@@ -38,9 +38,9 @@ extension CardCollectionViewCell {
     public override func configureViewHierarchy() {
         contentView.add(cardImageView, then: {
             $0.anchor(.leading(contentView.leadingAnchor),
-                      .top(contentView.topAnchor),
-                      .trailing(contentView.trailingAnchor, constant: 16))
-            $0.constrainHeight($0.widthAnchor, priority: .defaultLow)
+                      .top(contentView.topAnchor))
+            $0.constrainWidth(100)
+            $0.constrainHeight($0.widthAnchor, multiplier: 1.5)
         })
         
         contentView.add(titleLabel, then: {

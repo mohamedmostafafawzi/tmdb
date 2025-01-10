@@ -81,11 +81,11 @@ extension MovieDetailsViewController: UITableViewDataSource, UITableViewDelegate
             return header
         case 2:
             let header = tableView.dequeueReusableHeaderFooterView(DetailsSectionHeaderView.self)
-            header?.configure(with: "Actors")
+            header?.configure(with: "Similar Movies Actors")
             return header
         case 3:
             let header = tableView.dequeueReusableHeaderFooterView(DetailsSectionHeaderView.self)
-            header?.configure(with: "Directors")
+            header?.configure(with: "Similar Movies Directors")
             return header
         default:
             return nil
