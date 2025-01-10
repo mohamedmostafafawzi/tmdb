@@ -13,7 +13,7 @@ public protocol ContentUseCase {
     func getPopularMovies(page: Int) -> Promise<ResultContainer<[Movie]>>
     func searchMovies(query: String, page: Int) -> Promise<ResultContainer<[Movie]>>
     func getMovieDetails(movieID: Int) -> Promise<MovieDetails>
-    func getSimilarMovies(movieID: Int, page: Int) -> Promise<ResultContainer<[Movie]>>
+    func getSimilarMovies(movieID: Int) -> Promise<[Movie]>
     func getMovieCredits(movieID: Int) -> Promise<[Credit]>
 }
 
@@ -42,8 +42,8 @@ final class MainContentUseCase: ContentUseCase {
         contentRepository.getMovieDetails(movieID: movieID)
     }
     
-    func getSimilarMovies(movieID: Int, page: Int) -> Promise<ResultContainer<[Movie]>> {
-        contentRepository.getSimilarMovies(movieID: movieID, page: page)
+    func getSimilarMovies(movieID: Int) -> Promise<[Movie]> {
+        contentRepository.getSimilarMovies(movieID: movieID)
     }
     
     func getMovieCredits(movieID: Int) -> Promise<[Credit]> {

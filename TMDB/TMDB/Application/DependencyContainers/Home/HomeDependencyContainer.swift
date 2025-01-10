@@ -31,7 +31,8 @@ class HomeDependencyContainer: DependencyContainer {
         let coordinator = HomeCoordinator(
             presenter: presenter,
             navigationDelegate: homeCoordinatorNavigationDelegate,
-            homeViewControllerFactory: self
+            homeViewControllerFactory: self,
+            movieDetailsViewControllerFactory: self
         )
         self.coordinator = coordinator
         return coordinator
@@ -49,6 +50,23 @@ extension HomeDependencyContainer: HomeViewControllerFactory {
     
     private func makeHomeViewModel() -> HomeViewModel {
         return HomeViewModel(
+            navigationDelegate: coordinator,
+            contentUseCase: MainContentUseCase(contentRepository: sharedContentRepository)
+        )
+    }
+}
+
+extension HomeDependencyContainer: MovieDetailsViewControllerFactory {
+    func makeMovieDetailsViewController(with movieID: Int) -> MovieDetailsViewController {
+        return MovieDetailsViewController(
+            viewModel: makeMovieDetailsViewModel(with: movieID),
+            navigationDelegate: coordinator
+        )
+    }
+    
+    private func makeMovieDetailsViewModel(with movieID: Int) -> MovieDetailsViewModel {
+        return MovieDetailsViewModel(
+            movieID: movieID,
             navigationDelegate: coordinator,
             contentUseCase: MainContentUseCase(contentRepository: sharedContentRepository)
         )

@@ -12,7 +12,7 @@ struct CrewMemberDTO: Codable {
     let name: String?
     let profilePath: String?
     let popularity: Double
-    let department: DepartmentDTO?
+    let department: String?
     
     var profileURL: String? {
         guard let profilePath = profilePath else { return nil }
@@ -27,9 +27,22 @@ extension CrewMemberDTO {
             name: name ?? "Unknown",
             profileURL: profileURL,
             popularity: popularity,
-            department: (department ?? .unknown).toDomain()
+            department: departmentToDomain()
         )
     }
+    func departmentToDomain() -> Department {
+        switch department {
+        case "Acting":
+            return .acting
+        case "Directing":
+            return .directing
+        default:
+            return .uknown
+        }
+    }
+    
+    
+    
 }
 
 extension CrewMemberDTO {

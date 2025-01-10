@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol HomeViewControllerNavigationDelegate: AnyObject {
-    
+    func viewDetails(of movieID: Int)
 }

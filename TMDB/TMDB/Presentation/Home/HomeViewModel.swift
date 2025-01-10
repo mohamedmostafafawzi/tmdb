@@ -38,7 +38,7 @@ public class HomeViewModel: ViewModelType {
     private let paginationManager = PaginationManager()
     private var popularMovies: [Movie] = []
     private var moviesByYear: [Int: [Movie]] = [:]  // Movies grouped by year
-    private var years: [Int] = []                   // Sorted years as strings
+    private var years: [Int] = []                   // Sorted years
     private let disposeBag = DisposeBag()
     
     // MARK: - Initializer
@@ -170,8 +170,8 @@ public class HomeViewModel: ViewModelType {
     private func subscribeToHomeItemSelected() {
         input.homeItemSelected
             .subscribe(onNext: { [weak self] item in
-                // TODO: Navigate to movie details
-                print("Title: \(item.title) with id: \(item.id) Selected")
+                guard let self else { return }
+                self.navigationDelegate?.viewDetails(of: item.id)
             }).disposed(by: disposeBag)
     }
     

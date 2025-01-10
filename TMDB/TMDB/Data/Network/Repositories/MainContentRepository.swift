@@ -49,16 +49,11 @@ public final class MainContentRepository: ContentRepository {
         return getMovieDetailsResponse().map { $0.toDomain() }
     }
     
-    public func getSimilarMovies(movieID: Int, page: Int) -> Promise<ResultContainer<[Movie]>> {
+    public func getSimilarMovies(movieID: Int) -> Promise<[Movie]> {
         func getSimilarMoviesResponse() -> Promise<ResultResponseContainer<[MovieDTO]>> {
-            return networkService.fetchRequest(forRoute: ContentRouter.getSimilarMovies(movieID: movieID, page: page))
+            return networkService.fetchRequest(forRoute: ContentRouter.getSimilarMovies(movieID: movieID))
         }
-        return getSimilarMoviesResponse().map {
-            ResultContainer(
-                results: $0.results.map { $0.toDomain() },
-                totalPages: $0.totalPages
-            )
-        }
+        return getSimilarMoviesResponse().map { $0.results.map { $0.toDomain() } }
     }
     
     public func getMovieCredits(movieID: Int) -> Promise<[Credit]> {

@@ -8,10 +8,10 @@
 import Foundation
 
 public struct Movie {
-    let id: Int
-    let title: String
-    let overview: String
-    let releaseYear: Int
-    let posterURL: String?
-    let isOnWatchlist: Bool
+    public let id: Int
+    public let title: String
+    public let overview: String
+    public let releaseYear: Int
+    public let posterURL: String?
+    public let isOnWatchlist: Bool
 }

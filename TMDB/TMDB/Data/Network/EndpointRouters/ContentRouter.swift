@@ -12,7 +12,7 @@ enum ContentRouter: EndpointRouter {
     case getPopularMovies(page: Int)
     case searchMovies(query: String, page: Int)
     case getMovieDetails(movieID: Int)
-    case getSimilarMovies(movieID: Int, page: Int)
+    case getSimilarMovies(movieID: Int)
     case getMovieCredits(movieID: Int)
     
     
@@ -35,7 +35,7 @@ enum ContentRouter: EndpointRouter {
             return "search/movie"
         case .getMovieDetails(let movieID):
             return "movie/\(movieID)"
-        case .getSimilarMovies(let movieID, _):
+        case .getSimilarMovies(let movieID):
             return "movie/\(movieID)/similar"
         case .getMovieCredits(let movieID):
             return "movie/\(movieID)/credits"
@@ -54,9 +54,9 @@ enum ContentRouter: EndpointRouter {
                 "page": page,
                 "sort_by": "release_date.desc"
             ]
-        case .getSimilarMovies( _, let page):
+        case .getSimilarMovies:
             return [
-                "page": page
+                "page": "1"
             ]
         default:
             return nil
