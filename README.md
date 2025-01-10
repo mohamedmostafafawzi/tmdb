@@ -35,3 +35,6 @@ this is for the sake of simplicty. Also Avoid commiting any secrets on git.
 
 ## TODO:
 - Unit Testing
+- Navigation to credit details
+- Customize navigation controller
+- Add wishlist view supporting caching offline via Core Date
