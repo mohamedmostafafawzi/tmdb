@@ -21,7 +21,8 @@ public class DetailsTableViewCell: NiblessTableViewCell {
                                                 cornerRadius: Dimensions.cornerRadius,
                                                 maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
     private let backDropImageOverlay = UIView().style(backgroundColor: .black.withAlphaComponent(0.7),
-                                                   cornerRadius: Dimensions.mediumCornerRadius)
+                                                      cornerRadius: Dimensions.cornerRadius,
+                                                      maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
     let titleLabel = UILabel().style(font: .bold(size: .bodyL),
                                      textColor: .primaryText)
     let taglineLabel = UILabel().style(font: .medium(size: .bodyM),
