@@ -8,9 +8,10 @@
 
 import Foundation
 
-public struct HomeCellViewModel {
+public struct HomeCellViewModel: Hashable {
     
     // MARK: - Properties
+    let identifier: UUID = UUID()
     let id: Int
     let title: String
     let overview: String
@@ -26,5 +27,14 @@ public struct HomeCellViewModel {
         self.imageURL = domain.posterURL
         self.releaseYear = domain.releaseYear
         self.isOnWatchlist = domain.isOnWatchlist
+    }
+    
+    // MARK: - Methods
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
+    }
+    
+    public static func == (lhs: HomeCellViewModel, rhs: HomeCellViewModel) -> Bool {
+        return lhs.identifier == rhs.identifier
     }
 }

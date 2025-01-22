@@ -15,6 +15,7 @@ public class HomeViewController: NiblessViewController {
     // MARK: - Properties
     private var rootView: HomeRootView!
     private let viewModel: HomeViewModel
+    private var dataSource: UITableViewDiffableDataSource<HomeSectionViewModel, HomeCellViewModel>?
     private weak var navigationDelegate: HomeViewControllerNavigationDelegate?
     public override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     private let disposeBag = DisposeBag()
@@ -46,14 +47,46 @@ public class HomeViewController: NiblessViewController {
     }
     
     private func configureHomeTableView(tableView: UITableView) {
-        tableView.dataSource = self
         tableView.delegate = self
         
-        viewModel.output.homeSections.subscribe(onNext: { [unowned tableView] _ in
-            tableView.reloadData()
+        viewModel.output.homeSections.subscribe(onNext: { [weak self] _ in
+            guard let self else { return }
+            self.applySnapshot()
         }).disposed(by: disposeBag)
         
+        viewModel.output.homeSections
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.applySnapshot()
+            })
+            .disposed(by: disposeBag)
+
+        
+        dataSource = UITableViewDiffableDataSource<HomeSectionViewModel, HomeCellViewModel>(
+            tableView: tableView
+        ) { tableView, indexPath, item in
+            let cell = tableView.dequeueReusableCell(HomeTableViewCell.self)!
+            cell.configure(with: item)
+            return cell
+        }
+
+        dataSource?.defaultRowAnimation = .fade
+        
     }
+    
+    private func applySnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<HomeSectionViewModel, HomeCellViewModel>()
+        let sections = viewModel.output.homeSections.value
+        
+        snapshot.appendSections(sections)
+        for section in sections {
+            snapshot.appendItems(section.items, toSection: section)
+        }
+
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+
+
     
     private func subscribeToPagination() {
         self.viewModel.output.paginationManager.paginate(rootView.tableView) { [weak self] in
@@ -78,46 +111,20 @@ public class HomeViewController: NiblessViewController {
     
 }
 
-// MARK: - TableView DataSource and Delegate
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.output.homeSections.value.count
+// MARK: - TableView Delegate
+extension HomeViewController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let item = dataSource?.itemIdentifier(for: indexPath) else { return }
+        viewModel.input.homeItemSelected.onNext(item)
     }
-    
-    public func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        return viewModel.output.homeSections.value[section].items.count
-    }
-    
+
     public func tableView(
         _ tableView: UITableView,
         viewForHeaderInSection section: Int
     ) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(HomeSectionTableViewHeader.self)
-        let section = viewModel.output.homeSections.value[section]
-        header?.configure(with: section.title)
+        let section = dataSource?.snapshot().sectionIdentifiers[section]
+        header?.configure(with: section?.title ?? "")
         return header
-    }
-    
-    public func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(HomeTableViewCell.self)!
-        let section = viewModel.output.homeSections.value[indexPath.section]
-        let item = section.items[indexPath.row]
-        cell.configure(with: item)
-        return cell
-    }
-    
-    public func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    ) {
-        let section = viewModel.output.homeSections.value[indexPath.section]
-        let item = section.items[indexPath.row]
-        viewModel.input.homeItemSelected.onNext(item)
     }
 }
